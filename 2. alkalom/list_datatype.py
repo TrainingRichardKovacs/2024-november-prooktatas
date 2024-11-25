@@ -73,4 +73,79 @@ sol.extend(my_list2)
 # unpacking
 sol = [*my_list, *my_list2]
 
-print(sol)
+################################################################################################################
+# Meglévő elem módosítása
+
+my_list = [1, 2, 3, 4, 5]
+
+my_list[1] = "alma"
+print(my_list)
+##############################
+# 3. elemtől minden elemet le akarok cserélni
+my_list = [1, 2, 3, 4, 5]
+
+my_list[2::1] = (10,) # tuple
+my_list[2::1] = 20, 21, 22, 23, 24, 25 # ez egy felsorolás
+##############################
+
+my_list[-1] = None
+
+my_list[1] = (10, 20, 30, 40)
+
+# print(my_list)
+# print(my_list[1][2])
+
+#####################################################################################
+# unpack utasítást
+
+my_list = [1, 'alma', 3, 4, 5]
+
+# 
+# a, b, c = my_list[0:3] 
+# *packing | a, b, c = my_list[1:] -> unpacking művelet
+a, b, *c = my_list[1:] 
+
+######################################################################################
+# referencia hivatkozás listák között
+
+
+my_list = [1, 'alma', 3, 4, 5]
+
+# ez egy kétirányú referencia: ha az egyik list elemeit módosítod, akkor módosul a másik lista is
+# ez alól kivétel az új értékadás - pl. my_list = [1, 2, 3]
+my_list2 = my_list
+
+my_list.append(10)
+my_list2.extend("Karcsi")
+
+my_list[-1] = "almafa"
+
+my_list2[3:-1] = "Karcsi", "Zsolti"
+
+#############################################################
+
+my_tuple = [1, 2, [0, 1], "Ricsi"] 
+my_tuple[2].append(10)
+
+my_list = [1, 2, 3]
+
+# print(id(my_list[0]))
+# print(id(my_tuple[0]))
+# print(id(my_tuple[2][1]))
+
+#############################################################
+temp = [10, 20]
+my_tuple = (1, 2, temp)
+my_list = [1, 2, 3, 4, 5, temp]
+
+my_list2 = my_list
+
+my_list2[-1].append(30)
+
+print(my_tuple)
+print(my_list)
+
+
+
+
+
