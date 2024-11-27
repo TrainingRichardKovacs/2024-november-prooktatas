@@ -84,3 +84,18 @@ lastname = "Theron"
 full_name = firstname + " " + lastname + " "
 
 print(full_name * 5)
+
+
+my_str = """éldgajnsédlga
+    édgnjSLÉDKgnSLDKNG
+    lKSDbgnLSDgbnG
+    kLÉSDGNLÉKGDSKLÉGDLKÉGDKLÉG
+"""
+print(my_str)
+
+my_str = "éladgaédglajg \
+        aksgnaklégankg \
+        "
+
+
+print(my_str)
