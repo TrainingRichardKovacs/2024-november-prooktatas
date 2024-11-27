@@ -95,6 +95,7 @@ my_dict = {
     "brand": "Volvo"
 }
 
+
 if my_dict.get("cica") or my_dict['color'] == "black":
     print("Valami")
 
