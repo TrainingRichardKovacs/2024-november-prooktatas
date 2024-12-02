@@ -18,6 +18,7 @@ while logikai_vizsgálat_amíg_igaz:
     programkód
 
 break - kilépünk a ciklusból
+continue - a következő iterációra ugrunk
 """
  
 my_num = 10
