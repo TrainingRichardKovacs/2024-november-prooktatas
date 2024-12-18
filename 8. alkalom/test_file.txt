@@ -1,0 +1,7 @@
+A file kezelés alapjait
+JSON file struktúrát
+CSV-t
+
+Hiba és kivételkezelés
+
+Speciális függvény típust: generator függvények

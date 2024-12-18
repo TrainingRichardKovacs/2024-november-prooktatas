@@ -16,6 +16,22 @@ Use-casek: mikor célszerű használni a decoratorokat
 
 Amikor pl. webframework-öket illetve OOP-t fogsz használni
 
+
+egy módja a decorator használatnak
+time_it(count_list_elements)
+time_it(delete_items_from_list)
+
+Példa decorator függvény implementálásra:
+###############################################################################
+def time_it(func):
+    def wrapper(*args, **kwargs):
+        import time
+        start_dt = time.time()
+        result = func(*args, **kwargs)
+        print(f"it took {time.time() - start_dt} sec")
+        return result
+    return wrapper
+###############################################################################
 '''
 
 def my_func():
@@ -42,9 +58,10 @@ def time_it(func):
         import time # local import -> ha máshol a file-ban nem kell ezt a libraryt használni -> gyorsabb lesz a kódod
         start_dt = time.time()
         # ide tudsz adni új logikát
-        func(*args, **kwargs)
+        result = func(*args, **kwargs)
         # illetve ide
         print(f"it took {time.time() - start_dt} sec")
+        return result
     return wrapper
 
 
@@ -57,6 +74,7 @@ def count_list_elements(len_of_list):
         if item % 2 == 0:
             my_list[idx] = item ** 2
         count += 1
+    return count
 
 @time_it
 def delete_items_from_list(len_of_list):
@@ -65,15 +83,40 @@ def delete_items_from_list(len_of_list):
     for idx, item in enumerate(my_list):
         if item % 3 != 0:
             temp.append(item)
+    return temp
+
 
 @time_it
 def my_func(num1, num2, num3):
     import time
     time.sleep(5)
 
-count_list_elements(1_000_000)
-delete_items_from_list(1_000_000)
-my_func(1, 2, 3)
-# egy módja a decorator használatnak
-# time_it(count_list_elements)
-# time_it(delete_items_from_list)
+# cnt = count_list_elements(1_000_000)
+# my_list = delete_items_from_list(1_000_000)
+
+# print(cnt)
+
+#####################################################
+
+def time_it(valami):
+    def wrapper(func):
+        def inner_function(*args, **kwargs):
+            import time
+            print(f"valami: {valami}")
+            start_dt = time.time()
+            result = func(*args, **kwargs)
+            print(f"it took {time.time() - start_dt} sec")
+            return result
+        return inner_function
+    return wrapper
+
+
+@time_it
+def my_func(param):
+    print(param)
+    return param
+
+
+sol = my_func("alma")
+
+print(sol)
