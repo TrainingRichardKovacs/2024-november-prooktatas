@@ -1,0 +1,57 @@
+[
+    {
+        "phone_brand": "htc",
+        "phone_model": "HTC Exodus 1",
+        "price": 14725.05
+    },
+    {
+        "phone_brand": "apple",
+        "phone_model": "Apple Watch Edition 42mm (1st gen)",
+        "price": 13000
+    },
+    {
+        "phone_brand": "apple",
+        "phone_model": "Apple Watch Edition 38mm (1st gen)",
+        "price": 11000
+    },
+    {
+        "phone_brand": "huawei",
+        "phone_model": "Huawei Watch Ultimate Design",
+        "price": 4360
+    },
+    {
+        "phone_brand": "honor",
+        "phone_model": "Honor Magic Vs",
+        "price": 2940
+    },
+    {
+        "phone_brand": "honor",
+        "phone_model": "Honor Magic V2 RSR Porsche Design",
+        "price": 2700
+    },
+    {
+        "phone_brand": "huawei",
+        "phone_model": "Huawei Mate XT Ultimate",
+        "price": 2550
+    },
+    {
+        "phone_brand": "xiaomi",
+        "phone_model": "Xiaomi Mi Mix Alpha",
+        "price": 2500
+    },
+    {
+        "phone_brand": "honor",
+        "phone_model": "Honor Magic6 RSR Porsche Design",
+        "price": 2318.2999999999997
+    },
+    {
+        "phone_brand": "huawei",
+        "phone_model": "Huawei Mate X2",
+        "price": 2300
+    },
+    {
+        "phone_brand": "huawei",
+        "phone_model": "Huawei Mate X2 4G",
+        "price": 2290
+    }
+]

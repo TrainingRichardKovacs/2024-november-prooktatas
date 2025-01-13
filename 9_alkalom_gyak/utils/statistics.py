@@ -1,6 +1,38 @@
 """
 This module is used for analyze the data and get the necessary information from it.
 """
+"""
+If érdekességek:
+test_data = {
+        "kulcs": 1,
+        "kulcs2": "",
+        "kulcs3": None
+    }
+
+    if test_data.get('kulcs'):
+        print("kulcs létezik")
+    
+    if test_data.get('kulcs2'):
+        print("kulcs2 létezik")
+
+    if test_data.get('kulcs3'):
+        print("kulcs3 létezik")
+
+    '''
+     if 0: -> False
+     if None: -> False
+    '''
+    
+
+    print(True + True)
+    print(False - True)
+    print(True - False)
+    print(True - True)
+    print(True + 1)
+    print(False + 1)
+
+"""
+
 
 from uuid import uuid4
 
@@ -20,7 +52,7 @@ def get_top_ten_expensive_data(json_data):
     # print(list(sorted(temp.items(), key=lambda item: item[1]['price'], reverse=True))[0:11])
    
     sorted_data = sorted(temp.items(), key=lambda item: item[1]['price'], reverse=True)
-    list_sorted_data = list(sorted_data)
+    list_sorted_data = [item[1] for item in sorted_data]
     return list_sorted_data[0:11], temp   
     
 
@@ -142,10 +174,54 @@ def get_brand_value(cleaned_data: list, nth_top=5):
                      }
     }
 
-    # innen folytatjuk
-    print(min_max_final_dict)
+    return {
+        'brand_values': list_sorted_data[0:nth_top+1],
+        'min_max': min_max_final_dict
+        }
 
-    return list_sorted_data[0:nth_top+1]
+def get_os_data(json_data):
+    from collections import Counter
+
+    os_list = []
+    missing_os = set()
+
+    # for item in json_data:
+    #     if item['specs'].get('Platform'):
+    #         if item['specs']['Platform'].get('OS'):
+    #              if 'iOS' in item['specs']['Platform'].get('OS'):
+                       
+    #             print(item['specs']['Platform']['OS'])
+    #         else:
+    #             print(f"Nincs OS kulcs: {item['phone_model']}")
+    #     else:
+    #         print(f"Nincs platform kulcs: {item['phone_model']}")
+
+    for item in json_data:
+        if not item['specs'].get('Platform'):
+            missing_os.add(f"Nincs platform kulcs: {item['phone_model']}")
+            continue
+        
+        if not item['specs']['Platform'].get('OS'):
+            missing_os.add(f"Nincs OS kulcs: {item['phone_model']}")
+            continue
+
+        os_list.append(item['specs']['Platform']['OS'])
+
+    os_types = set(os_list)
+    most_used_counter = Counter(os_list)
+    most_used_os = most_used_counter.most_common(1)
+
+    # sorted_os_list = sorted(((os_list.count(e), e) for e in set(os_list)), reverse=True)
+    # print(sorted_os_list[0])
+
+    return {
+        "os_types": list(os_types),
+        "most_used_os": {
+            "os_type": most_used_os[0][0],
+            'cnt': most_used_os[0][1]
+        }
+    }
+
 
 if __name__ == '__main__':
     
@@ -160,10 +236,10 @@ if __name__ == '__main__':
 
     top_ten_data = get_top_ten_expensive_data(json_data)
     
-    # print(top_ten_data[0])
-    # temp = [item for item in top_ten_data[1].items()]
     temp = list(top_ten_data[1].items())
 
-    top_brand_value = get_brand_value(temp, 10)
+    top_brand_value = get_brand_value(temp, 15)
 
-    print(top_brand_value)
+    get_os_data(json_data)
+
+    # print(top_brand_value)

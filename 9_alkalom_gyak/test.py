@@ -1,22 +1,9 @@
-s1 = 'GeeksforGeeks'
+a = 5
 
-# anonymous function
-s2 = lambda func: func.upper()
-
-
-people = {3: "Jim", 2: "Jack", 4: "Jane", 1: "Jill"}
-
-data = dict(sorted(people.items()))
-
-print(people.items())
-
-# lambda anonymous function
-data = dict(sorted(people.items(), key=lambda item: item[1]))
-
-print(data)
-
-# filter, map, reduce, lambda -> ezek frequentált használata -> funkcionális programozás
+def my_func(c):
+    b = c * 2
+    c += 10
+    print(b)
 
 
-
-# print(s2(s1))
+my_func(a)
