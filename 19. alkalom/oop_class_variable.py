@@ -19,11 +19,11 @@ class Test:
 
     def print_class_value(self):
         print(self.my_class_val)
-
     #innen folytatni
     @classmethod
     def my_classmethod(cls):
         ...
+
 
 test = Test()
 
